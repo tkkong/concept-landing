@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'Circular';
+  src: url('/fonts/circular-bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Circular', sans-serif;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  background-color: #FAF9F6;
+  position: relative;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: rgba(253, 253, 241, 1);
+}
+
+.concept-text {
+  font-size: 8rem;
+  color: rgba(23, 55, 109, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.links-container {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+
+}
+
+.link:hover {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .concept-text {
+    font-size: 4rem;
+  }
+  
+  .links-container {
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 1rem;
+  }
+  
+  .link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .concept-text {
+    font-size: 3rem;
+  }
+  
+  .links-container {
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 0.75rem;
+  }
+  
+  .link {
+    font-size: 0.85rem;
+  }
+}
+
