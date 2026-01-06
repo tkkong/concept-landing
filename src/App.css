@@ -19,6 +19,7 @@ html, body {
 
 #root {
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
   width: 100vw;
   background-color: #FAF9F6;
   position: relative;
@@ -26,12 +27,14 @@ html, body {
 
 .app {
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background-color: rgba(253, 253, 241, 1);
+  min-height: -webkit-fill-available; /* iOS Safari fix */
 }
 
 .concept-text {
@@ -51,6 +54,8 @@ html, body {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom); /* iOS safe area support */
 }
 
 .link {
@@ -74,9 +79,13 @@ html, body {
   
   .links-container {
     bottom: 1.5rem;
+    bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem)); /* Ensure visibility on mobile */
     left: 50%;
     transform: translateX(-50%);
     gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
+    justify-content: center;
   }
   
   .link {
@@ -91,9 +100,13 @@ html, body {
   
   .links-container {
     bottom: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom, 1rem)); /* Ensure visibility on mobile */
     left: 50%;
     transform: translateX(-50%);
     gap: 0.75rem;
+    width: 100%;
+    padding: 0 1rem;
+    justify-content: center;
   }
   
   .link {
