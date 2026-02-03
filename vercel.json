@@ -1,15 +1,18 @@
 {
   "functions": {
-    "api/v1/rework/oauth/[...path].js": {
+    "api/v1/rework/oauth/start.js": {
+      "includeFiles": "server/**"
+    },
+    "api/v1/rework/oauth/callback.js": {
+      "includeFiles": "server/**"
+    },
+    "api/v1/rework/oauth/handoff.js": {
+      "includeFiles": "server/**"
+    },
+    "api/v1/rework/oauth/refresh.js": {
       "includeFiles": "server/**"
     }
   },
-  "rewrites": [
-    {
-      "source": "/api/v1/rework/oauth/:path*",
-      "destination": "/api/v1/rework/oauth/[...path]"
-    }
-  ],
   "headers": [
     {
       "source": "/api/v1/rework/oauth/:path*",
