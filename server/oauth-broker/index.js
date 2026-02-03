@@ -22,7 +22,7 @@ import {
 
 const SESSION_TTL_MS = 10 * 60 * 1000;
 const HANDOFF_TTL_MS = 5 * 60 * 1000;
-const DEFAULT_BASE_PATH = '/rework/oauth';
+const DEFAULT_BASE_PATH = '/api/v1/rework/oauth';
 const PROVIDERS = new Set(['google', 'github', 'slack', 'notion']);
 
 function resolveConfig() {

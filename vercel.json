@@ -1,18 +1,12 @@
 {
   "functions": {
-    "api/rework/oauth/[...path].js": {
+    "api/v1/rework/oauth/[...path].js": {
       "includeFiles": "server/**"
     }
   },
-  "rewrites": [
-    {
-      "source": "/rework/oauth/:path*",
-      "destination": "/api/rework/oauth/:path*"
-    }
-  ],
   "headers": [
     {
-      "source": "/rework/oauth/:path*",
+      "source": "/api/v1/rework/oauth/:path*",
       "headers": [
         {
           "key": "Cache-Control",

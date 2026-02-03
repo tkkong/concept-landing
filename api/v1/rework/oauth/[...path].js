@@ -1,4 +1,4 @@
-import { createOAuthBroker } from '../../../server/oauth-broker/index.js';
+import { createOAuthBroker } from '../../../../server/oauth-broker/index.js';
 
 const broker = createOAuthBroker();
 
@@ -8,8 +8,8 @@ export const config = {
 
 export default async function handler(req, res) {
   const originalUrl = req.url || '';
-  if (originalUrl.startsWith('/api/rework/oauth')) {
-    req.url = originalUrl.replace(/^\/api/, '');
+  if (originalUrl.startsWith('/api/v1/rework/oauth')) {
+    req.url = originalUrl.replace(/^\/api\/v1/, '');
   }
 
   const handled = await broker.handle(req, res);
