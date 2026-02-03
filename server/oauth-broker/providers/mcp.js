@@ -9,7 +9,6 @@ const DEFAULT_MCP_URLS = {
 };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const CLIENT_STORE_PATH = path.resolve(__dirname, '..', 'data', 'mcp-clients.json');
 
 function normalize(value) {
   if (!value) return undefined;
@@ -46,10 +45,22 @@ function getEnvClient(provider) {
   return { clientId, clientSecret };
 }
 
+function getClientStorePath() {
+  const custom = normalize(process.env.MCP_CLIENT_STORE_PATH);
+  if (custom) {
+    return path.resolve(custom);
+  }
+  if (process.env.VERCEL) {
+    return '/tmp/mcp-clients.json';
+  }
+  return path.resolve(__dirname, '..', 'data', 'mcp-clients.json');
+}
+
 function loadClientStore() {
+  const clientStorePath = getClientStorePath();
   try {
-    if (!fs.existsSync(CLIENT_STORE_PATH)) return {};
-    const raw = fs.readFileSync(CLIENT_STORE_PATH, 'utf-8');
+    if (!fs.existsSync(clientStorePath)) return {};
+    const raw = fs.readFileSync(clientStorePath, 'utf-8');
     const parsed = JSON.parse(raw);
     return parsed ?? {};
   } catch {
@@ -58,11 +69,12 @@ function loadClientStore() {
 }
 
 function saveClientStore(store) {
-  const dir = path.dirname(CLIENT_STORE_PATH);
+  const clientStorePath = getClientStorePath();
+  const dir = path.dirname(clientStorePath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
-  fs.writeFileSync(CLIENT_STORE_PATH, JSON.stringify(store, null, 2));
+  fs.writeFileSync(clientStorePath, JSON.stringify(store, null, 2));
 }
 
 function getStoreKey(provider, serverUrl) {
