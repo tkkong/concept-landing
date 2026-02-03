@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/rework/oauth/:path*",
+      "destination": "/api/rework/oauth/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/rework/oauth/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    }
+  ]
+}
